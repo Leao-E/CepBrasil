@@ -21,7 +21,7 @@ function build (inputFiles, outputFile, dbName){
    makeSqlInsertQuery(outputFile, dbName);
 
    inputFiles.forEach(inputFile => makeSqlInsertData(inputFile, outputFile, rec => {
-      const [cep, logradouro, complemento, bairro, idCidade, idEstado] = rec;
+      const [cep, logradouro, complemento, bairro, idCidade, idEstado] = rec.map(str => str.replace(/\"/g, `'`));
       return `("${cep}", "${logradouro}", "${complemento}", "${bairro}", ${Number.parseInt(idCidade)}, ${Number.parseInt(idEstado)}),\n`;
    }));
 
