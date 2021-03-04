@@ -40,7 +40,6 @@ function start(state, outputFile, dbName) {
    CsvToSql.build(inputPaths, outputPath, dbName ? dbName : 'states_cep');
 }
 
-console.log(process.argv);
 const getArg = argName => {
    const rgxMatch = new RegExp(`--${argName}=.*`);
    const rgxReplace = new RegExp(`--${argName}=`);
